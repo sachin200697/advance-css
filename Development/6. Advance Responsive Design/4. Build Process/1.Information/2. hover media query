@@ -1,0 +1,12 @@
+For cards if we hover on cards then a butten will be display at the backside of the card but 
+on mobile devices it is very hard to hover or sometimes not possible.
+
+So to show them we simply dont hide backside but include backside as front side only.
+
+But to identify if we can hover on it or not we can use hover media query.
+
+
+Brower console options:
+
+we can add devices types(to make it mobile touch or non touch) and also devices pixel ration(to test to load
+different images baised on pixel ration or dpi(dotes per inch)) .

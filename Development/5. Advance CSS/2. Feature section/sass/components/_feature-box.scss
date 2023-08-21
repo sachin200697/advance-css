@@ -1,0 +1,28 @@
+.feature-box{
+
+    background-color: rgba($color: $color-white, $alpha: 0.8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 2.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+    transition: all 0.2s;
+    &__icon{
+        // as icon is a font so to increate the size we need to change font-size
+        font-size: 6rem;
+        margin-bottom: .5rem;
+
+        // give font text a gradient color
+        background-image: linear-gradient(#{$color-green-primary}, #{$color-green-tritory});
+        -webkit-background-clip: text;
+        color: transparent;
+        display: inline-block;
+    }
+    &:hover{
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+
+    &__text{
+
+    }
+}

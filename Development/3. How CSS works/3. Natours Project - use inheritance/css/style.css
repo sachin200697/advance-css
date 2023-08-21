@@ -1,0 +1,212 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*, *::after, *::before{
+    margin: 0;
+    padding:0;
+
+    /* to make it inherit for every elemnet (inherited from body as it is declared in body) */
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%; 
+}
+
+body{
+    font-family: "Leto", sans-serif;
+    font-weight: 400;
+    color: #777;
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 3rem;
+
+    /* box-sizing is not inherited bydefault but using inherit keywork we can make it inherit for every element 
+    but we need to use inherit for every element so we will use universal selector to inherit.*/
+    box-sizing: border-box;
+}
+
+.header{
+    height: 95vh;
+
+    background-image: linear-gradient(to right bottom, #7ed56f80, #28b48580), url(../img/hero.jpg);
+    
+
+    background-size: cover; /*  it will try to fit the img to the container element(header) */
+    background-position: center; /* it will ensure that no matter what is the device size but img will be at top */
+   
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);   /* give condinates -> start from left top then give clockwise */
+
+    position: relative;  /* to give the from refrence to the child element -> logo-box */
+}
+
+.logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.logo{
+    height: 3.5rem;
+}
+
+.text-box{
+  
+    position: absolute;
+    top: 40%;   /* here 50% is refering to the parent element width and height */
+    left: 50%;  /* here 50% is refering to the parent element width and height */
+
+   
+    transform: translate(-50%, -50%);   /* here 50% is refring to element itself */
+
+   
+    text-align: center;
+}
+
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase;
+
+     
+    backface-visibility: hidden;   
+
+    
+    margin-bottom: 6rem;
+}
+
+.heading-primary-main{
+    display: block; /* span is by default inline element like text, so to send the next sentence to next line make it block */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3rem;
+    
+   
+    animation-name: moveInLeft;
+    animation-duration: 2s; /* animation will take 3s to complete */
+
+    
+
+   
+}
+
+.heading-primary-sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.5rem;
+    animation-name: moveInRight;
+    animation-duration: 2s;
+}
+
+/* animation */
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translate(-10rem);
+    }
+    80%{
+        transform: translate(1rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translate(100px);    /* 100px is respective to initial state */
+    }
+    80%{
+        transform: translate(-10px);    /* -10px is respective to initial state */
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);    /* 0 is respective to initial state */
+    }
+}
+
+.btn:link, .btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding:1rem 2rem;
+
+   
+    display: inline-block;
+
+   
+    border-radius: 20rem;
+
+   
+    transition: all 0.2s;
+
+    position: relative;
+
+    font-size: 1.6rem;
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+
+.btn:hover{
+    transform: translateY(-3px);   /* -3px is respective to initial state */
+
+   
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+}
+
+
+.btn:active{
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+
+.btn::after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20rem;
+    position: absolute; /* we need to take btn as its relative position */
+    top:0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animation{
+    animation: moveInButton 2s ease-out 0.75s;
+   
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInButton {
+    0%{
+        opacity: 0;
+        transform: translateY(2rem);    /* 100px is respective to initial state */
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);    /* 0 is respective to initial state */
+    }
+}

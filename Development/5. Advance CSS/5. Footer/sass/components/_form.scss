@@ -1,0 +1,101 @@
+.form{
+    &__group{
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+
+    }
+
+    &__input{
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color: $color-white, $alpha: .5);
+        width: 100%;
+        border:none;
+        //by default font-family will not be inherited by input elements
+        font-family: inherit;
+        color:inherit;
+
+        // while we focuss on input then label transform to bottom, so to remove that effect
+        // we need to give it a boder
+        border-bottom: 3px solid transparent;
+
+        &:focus{
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .5);
+            border-bottom: 3px solid $color-green-primary;
+        }
+
+        &::-webkit-input-placeholder{
+            color:$color-gray-dark-2;
+        }
+
+        &:focus:invalid{
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    }
+
+    &__label{
+        margin-left: 2rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: .7rem;
+        display: block;
+        transition: all 0.8s;
+    }
+
+    // sibling selector, to work it => form__input should come first then immediately form__label should come
+    &__input:placeholder-shown + &__label{
+        opacity: 0; //we can animate it
+        visibility: hidden; //we can not animate it
+        transform: translateY(-4rem);   //to give the effect that it is comming from input element
+    }
+
+    &__radio-group{
+        // width: 50%;
+        display: inline-block;
+    }
+
+    &__radio-input{
+        display: none;  //hiding the default radio buttons to create custom radio buttons
+    }
+    &__radio-label{
+        font-size: $default-font-size;
+        cursor: pointer;    //it will make mouse as a hand to click
+        position: relative; //to position clild form__radio-button
+        padding-left: 4rem;
+    }
+    &__radio-button{
+        width: 3rem;
+        height: 3rem;
+        border: 5px solid $color-green-primary;
+        border-radius: 50%;
+        // apply display: inline-block; property so other property can work 
+        display: inline-block;
+        position: absolute;
+        left: 0%;top:-0.5rem;
+
+        // creating custom radio button and it works same for the custom check box as well
+        &::after{
+            content: '';
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            display: block;
+            background-color: $color-green-primary;
+
+            // center the content
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; //initially it should not be display, it should be display only when radio butten clicked
+            transition: all 0.3s;
+        }
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+}

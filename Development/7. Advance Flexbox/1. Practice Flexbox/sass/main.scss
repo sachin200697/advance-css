@@ -1,0 +1,94 @@
+// abstracts import
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// base import
+@import 'base/animations';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
+
+// components
+
+// layout import
+
+// pages import
+@import 'pages/home';
+
+// theme import
+
+// vendors
+
+* {
+	margin: 0;
+	padding: 0%;
+	box-sizing: border-box;
+}
+
+.container {
+	background-color: $color-green-primary;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	/*
+        space-evenly = space between every element and also from cornors will be equal
+        space-around = space towards left and right of a element will be equal
+    */
+
+	align-items: flex-start;
+	/*
+        baseline: align text not the item
+        center: align items
+        stretch: make items of same height
+    */
+
+	// used to create another row if element does not fit
+	flex-wrap: wrap; //by default it is nowrap
+
+	// used to align all rows together
+	align-content: flex-start;
+	/*
+        stretch -> give space between rows
+    */
+}
+
+.item {
+	margin: 4rem;
+	padding: 3rem;
+	background-color: #f1425d;
+	color: white;
+}
+
+.item:nth-child(2) {
+	height: 20rem;
+	background-color: blue;
+}
+
+.item:nth-child(4) {
+	background-color: rgb(56, 221, 221);
+
+	// it allows to override the align-item property for individual item
+	align-self: flex-end;
+
+	// help to reorder the items, bydefault they have order = 0
+	// lower the order means it will come first
+	order: -1;
+
+	// helps to define the size for elements, higher the value higher the size comparitevely(means in
+	// comparison of other elements
+	flex-grow: 1; //it will try to get as much space as it can
+}
+
+.item:nth-child(3) {
+	// helps to define the width of element
+	flex-basis: 20%; //it is like max-width
+
+	// it helps how should element shrink, by default it is 1
+	flex-shrink: 0; //now item will not shrink even if we reduce the device width
+
+	// combine three properties we can use flex only
+	// if we use flex: 1; then it will work simple like flex-grow
+	// if we use flex: 1 1; then it will combine flex-grow and flex-shrink
+	flex: 0 0 300px; // it will combine flex-grow, flex-shrink and flex-basis property
+}

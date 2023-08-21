@@ -1,0 +1,58 @@
+// to create a partial file we need to name it start with underscore (_) liek: _base.scss
+// so that it can be imported to main file
+// to import it inside main.scss file use this command: @import "base/base"; //no need to use _ and .scss while importing
+// we need to provide file path to import the file.
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+
+	/* to make it inherit for every elemnet (inherited from body as it is declared in body) */
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%; //this define that 1rem = 10px   ;
+
+	//Note : Put large device media queries first then small one in case of max-width is used
+	//media queries for phone
+	// we also want to font-size should be calculate based on 1rem = 8px in this media query and
+	// also in the second media query (tab-port), so by default they both will apply
+	// so to apply the same configuration we can ignore small one
+	// @include respond(phone){
+	// 	font-size: 50%;	// 1rem sould be 8px, so % = (8/16) * 100 % = 50%
+	// }
+
+	//media queries for tab-land (<1200
+	@include respond(tab-land) {
+		font-size: 56.25%; // 1rem sould be 9px, so % = (9/16) * 100 % = 56.25%
+	}
+
+	//media queries for tab-port (<900
+	@include respond(tab-port) {
+		font-size: 50%; // 1rem sould be 8px, so % = (8/16) * 100 % = 50%
+	}
+
+	//media queries for big-desktop
+	@include respond(big-desktop) {
+		font-size: 80%; // 1rem sould be 12px, so % = (12/16) * 100 % = 75%
+	}
+}
+
+body {
+	/* box-sizing is not inherited bydefault but using inherit keywork we can make it inherit for every element 
+    but we need to use inherit for every element so we will use universal selector to inherit.*/
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0; //padding 0 on small devices, it will remove the white border around whole website
+	}
+}
+
+::selection {
+	background-color: $color-green-primary;
+	color: $color-white;
+}

@@ -1,0 +1,55 @@
+body {
+	font-family: 'Leto', sans-serif;
+	font-weight: 400;
+	color: $color-gray;
+	font-size: 16px;
+	line-height: 1.7;
+	padding: 3rem;
+}
+
+.heading-primary {
+	color: $color-white;
+	text-transform: uppercase;
+
+	backface-visibility: hidden;
+
+	margin-bottom: 6rem;
+
+	&--main {
+		display: block; /* span is by default inline element like text, so to send the next sentence to next line make it block */
+		font-size: 6rem;
+		font-weight: 400;
+		letter-spacing: 3rem;
+
+		animation-name: moveInLeft;
+		animation-duration: 2s; /* animation will take 3s to complete */
+	}
+
+	&--sub {
+		display: block;
+		font-size: 2rem;
+		font-weight: 400;
+		letter-spacing: 1.5rem;
+		animation-name: moveInRight;
+		animation-duration: 2s;
+	}
+}
+
+// .heading-primary--main {
+// 	display: block; /* span is by default inline element like text, so to send the next sentence to next line make it block */
+// 	font-size: 6rem;
+// 	font-weight: 400;
+// 	letter-spacing: 3rem;
+
+// 	animation-name: moveInLeft;
+// 	animation-duration: 2s; /* animation will take 3s to complete */
+// }
+
+// .heading-primary--sub {
+// 	display: block;
+// 	font-size: 2rem;
+// 	font-weight: 400;
+// 	letter-spacing: 1.5rem;
+// 	animation-name: moveInRight;
+// 	animation-duration: 2s;
+// }

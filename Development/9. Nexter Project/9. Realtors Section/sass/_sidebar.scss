@@ -1,0 +1,35 @@
+.sidebar {
+	background-color: $color-primary;
+	grid-column: sidebar-start/sidebar-end;
+	grid-row: 1/-1;
+
+	display: flex;
+	justify-content: center;
+}
+
+.nav-btn{
+	border: none;
+	border-radius: 0;
+
+	height: 2px;
+	width: 4.5rem;
+	background-color: #fff;
+
+	margin-top: 4.5rem;
+	line-height: 1;
+
+	&::before, &::after{
+		content: '';
+		height: 2px;
+		width: 4.5rem;
+		background-color: #fff;
+		display: block;
+	}
+
+	&::before{
+		transform: translateY(-1.5rem);
+	} 
+	&::after{
+		transform: translateY(0);
+	}
+}

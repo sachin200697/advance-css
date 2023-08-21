@@ -1,0 +1,61 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/*
+1. abstracts: To have all thing that does not show anything on page but help to do it. 
+Ex: variables, mixins, functions
+
+2. base: It will have all basic things like in base file it has universal selector, html, body 
+related styles, then in animation file will hold all animations and many others.
+
+3. components: It will contains file that are for specific component. 
+Ex: We can create a seprate file for button component.
+
+4. layout: Components that will be a part or many pages and help to define the layout will come
+under it. Ex: header, footer
+
+5. pages: To style a particular page.
+
+6. themes: To make some theme
+
+7. vendors: All third party styles like: bootstrap.
+
+*/
+
+// abstracts import
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// base import
+@import 'base/animations';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
+
+// components
+@import 'components/button';
+@import 'components/composition';
+@import 'components/feature-box';
+@import 'components/card';
+@import 'components/story';
+@import 'components/bg-video';
+@import 'components/form';
+
+// layout import
+@import 'layout/header';
+@import 'layout/grid';
+@import 'layout/footer';
+
+// pages import
+@import 'pages/home';
+
+// theme import
+
+// vendors

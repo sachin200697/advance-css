@@ -1,0 +1,290 @@
+.container-a {
+  background-color: #eee;
+  width: 700px;
+  display: grid;
+  grid-template-rows: 100px 150px;
+  grid-template-columns: 100px 200px 300px;
+  grid-gap: 10px 15px; }
+  .container-a .item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .container-a .item--1 {
+      background-color: orange; }
+    .container-a .item--2 {
+      background-color: Green; }
+    .container-a .item--3 {
+      background-color: violet; }
+    .container-a .item--4 {
+      background-color: Pink; }
+    .container-a .item--5 {
+      background-color: Blue; }
+    .container-a .item--6 {
+      background-color: Brown; }
+
+.container-b {
+  background-color: #eee;
+  margin-top: 50px;
+  width: 700px;
+  display: grid;
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, 100px) 1fr;
+  grid-gap: 10px 15px; }
+  .container-b .item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .container-b .item--1 {
+      background-color: orange; }
+    .container-b .item--2 {
+      background-color: Green; }
+    .container-b .item--3 {
+      background-color: violet; }
+    .container-b .item--4 {
+      background-color: Pink; }
+    .container-b .item--5 {
+      background-color: Blue; }
+    .container-b .item--6 {
+      background-color: Brown; }
+
+.container-c {
+  background-color: #eee;
+  width: 700px;
+  display: grid;
+  margin-top: 50px;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 15px; }
+  .container-c .item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .container-c .item--1 {
+      background-color: orange;
+      grid-area: 2 / 2 / 3 / 4; }
+    .container-c .item--2 {
+      background-color: Green; }
+    .container-c .item--3 {
+      background-color: violet; }
+    .container-c .item--4 {
+      background-color: Pink; }
+    .container-c .item--5 {
+      background-color: Blue; }
+    .container-c .item--6 {
+      background-color: Brown;
+      grid-row: 1/2;
+      grid-column: 2/span 2; }
+
+.chalange-container {
+  background-color: #eee;
+  width: 700px;
+  display: grid;
+  margin-top: 50px;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(3, 1fr) 200px;
+  grid-gap: 10px 15px; }
+  .chalange-container__item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .chalange-container__item--1 {
+      background-color: orange;
+      grid-area: 1 / 1 / 2 / -1; }
+    .chalange-container__item--2 {
+      background-color: Green;
+      grid-area: 2 / 1 / 4 / 2; }
+    .chalange-container__item--3 {
+      background-color: violet;
+      grid-area: 2 / 2 / 4 / 3; }
+    .chalange-container__item--4 {
+      background-color: Pink;
+      grid-area: 2 / 3 / 4 / 4; }
+    .chalange-container__item--5 {
+      background-color: Blue;
+      grid-area: 2 / 4 / 8 / -1; }
+    .chalange-container__item--6 {
+      background-color: Brown;
+      grid-area: 4 / 1 / 8 / 4; }
+    .chalange-container__item--7 {
+      background-color: Brown;
+      grid-area: 8 / 1 / -1 / -1; }
+
+.chalange-solution-1-container {
+  margin: 50px auto;
+  width: 800px;
+  display: grid;
+  grid-template-rows: 50px 100px 200px 50px;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  grid-gap: 20px; }
+  .chalange-solution-1-container > * {
+    background-color: orange;
+    padding: 20px;
+    color: white;
+    font-size: 20px; }
+  .chalange-solution-1-container .header {
+    grid-column: 1/-1; }
+  .chalange-solution-1-container .footer {
+    grid-column: 1/-1; }
+  .chalange-solution-1-container .sidebar {
+    grid-column: 4 / 5;
+    grid-row: 2 / span 2; }
+  .chalange-solution-1-container .main {
+    grid-column: 1/4; }
+
+.chalange-solution-2-container {
+  margin-top: 50px;
+  width: 800px;
+  display: grid;
+  grid-template-rows: [header-start] 50px [header-end box-start] 100px [box-end main-start] 200px [main-end footer-start] 50px [footer-end];
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+  grid-gap: 20px; }
+  .chalange-solution-2-container > * {
+    background-color: green;
+    padding: 20px;
+    color: white;
+    font-size: 20px; }
+  .chalange-solution-2-container .header {
+    grid-column: col-start 1/ grid-end; }
+  .chalange-solution-2-container .footer {
+    grid-column: col-start 1/ grid-end; }
+  .chalange-solution-2-container .sidebar {
+    grid-column: col-end 3 / grid-end;
+    grid-row: box-start / main-end; }
+  .chalange-solution-2-container .main {
+    grid-column: col-start 1/ col-end 3; }
+
+.chalange-solution-3-container {
+  margin-top: 50px;
+  width: 800px;
+  display: grid;
+  grid-template-rows: 50px 100px 200px 50px;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  grid-gap: 20px;
+  grid-template-areas: "head   head   head   head" "box-1  box-2  box-3  side" "main   main   main   side" "foot   foot   foot   foot"; }
+  .chalange-solution-3-container > * {
+    background-color: violet;
+    padding: 20px;
+    color: white;
+    font-size: 20px; }
+  .chalange-solution-3-container .header {
+    grid-area: head; }
+  .chalange-solution-3-container .footer {
+    grid-area: foot; }
+  .chalange-solution-3-container .sidebar {
+    grid-area: side; }
+  .chalange-solution-3-container .main {
+    grid-area: main; }
+
+.container-d {
+  margin: 50px auto;
+  width: 800px;
+  background-color: pink;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  /*
+        here we are creating 2 row and 2 column that can contanin only 4 items and these 4 cells are 
+        explicit grid. There will be a dark line around all explicit grid items in devtools -> grid lines
+
+        So if we have more that 4 items then grid will automatically create gride for them and these cells
+        are part of implicit grid.
+        By default all extra items will go into a new row not into the new column bacause grid-auto-flow is
+        set to row.
+        Implicit grid trys to only enough space.
+    */
+  grid-auto-rows: 100px;
+  grid-auto-columns: .5fr;
+  align-items: center;
+  justify-items: center; }
+  .container-d .item {
+    font-size: 20px;
+    color: white;
+    background-color: aqua;
+    padding: 20px; }
+    .container-d .item--4 {
+      background-color: cadetblue;
+      grid-row: 2/span 3;
+      align-self: end;
+      justify-self: start; }
+    .container-d .item--7 {
+      background-color: orange;
+      grid-column: 1/-1; }
+
+.container-e {
+  margin: 50px auto;
+  width: 800px;
+  height: 800px;
+  background-color: pink;
+  display: grid;
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, 200px);
+  grid-gap: 10px;
+  grid-auto-rows: 100px;
+  grid-auto-columns: .5fr;
+  justify-content: center;
+  align-content: center; }
+  .container-e .item {
+    font-size: 20px;
+    color: white;
+    background-color: aqua;
+    padding: 20px; }
+
+.container-f {
+  background-color: #eee;
+  width: 700px;
+  display: grid;
+  margin-top: 50px;
+  display: grid;
+  grid-template-rows: 100px max-content;
+  grid-template-columns: repeat(4, minmax(150px, min-content));
+  grid-gap: 10px; }
+  .container-f .item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .container-f .item--1 {
+      background-color: orange; }
+    .container-f .item--2 {
+      background-color: Green; }
+    .container-f .item--3 {
+      background-color: violet; }
+    .container-f .item--4 {
+      background-color: Pink; }
+    .container-f .item--5 {
+      background-color: Blue; }
+    .container-f .item--6 {
+      background-color: Brown; }
+    .container-f .item--7 {
+      background-color: black; }
+    .container-f .item--8 {
+      background-color: red; }
+
+.container-g {
+  background-color: #eee;
+  width: 1000px;
+  display: grid;
+  margin-top: 50px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+  .container-g .item {
+    padding: 20px;
+    font-size: 20px;
+    color: white; }
+    .container-g .item--1 {
+      background-color: orange; }
+    .container-g .item--2 {
+      background-color: Green; }
+    .container-g .item--3 {
+      background-color: violet; }
+    .container-g .item--4 {
+      background-color: Pink; }
+    .container-g .item--5 {
+      background-color: Blue; }
+    .container-g .item--6 {
+      background-color: Brown; }
+    .container-g .item--7 {
+      background-color: black; }
+    .container-g .item--8 {
+      background-color: red; }

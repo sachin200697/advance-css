@@ -1,0 +1,108 @@
+.header {
+	height: 85vh;
+
+	background-image: linear-gradient(
+			to right bottom,
+			rgba($color-green-primary, 0.8),
+			rgba($color-green-tritory, 0.8)
+		),
+		url(../img/hero-small.jpg);
+
+	background-size: cover; /*  it will try to fit the img to the container element(header) */
+	background-position: center; /* it will ensure that no matter what is the device size but img will be at top */
+
+	// to use most effecient image we can use below media query with resolution
+	// dpi = dots per inch
+	// 192dpi is the highesh resolution(apply devices), so we take reference of it
+	// min resolution does not work in safari so we need to include another query for it
+	@media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+		(min-width: 125em),
+		/* putting coma is like using or */ only screen and (-webkit-min-device-pixel-ratio: 2) /* for safari // here 2 means 2x */ {
+		background-image: linear-gradient(
+				to right bottom,
+				rgba($color-green-primary, 0.8),
+				rgba($color-green-tritory, 0.8)
+			),
+			url(../img/hero.jpg);
+	}
+
+	// if clip-path is supported then apply the code othersise go with default properties
+	@supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+		-webkit-clip-path: polygon(
+			0 0,
+			100% 0,
+			100% 75vh,
+			0 100%
+		); /* give condinates -> start from left top then give clockwise */
+
+		clip-path: polygon(
+			0 0,
+			100% 0,
+			100% 75vh,
+			0 100%
+		); /* give condinates -> start from left top then give clockwise */
+		height: 95vh;
+	}
+
+	@include respond(phone) {
+		-webkit-clip-path: polygon(
+			0 0,
+			100% 0,
+			100% 85vh,
+			0 100%
+		); /* give condinates -> start from left top then give clockwise */
+
+		clip-path: polygon(
+			0 0,
+			100% 0,
+			100% 85vh,
+			0 100%
+		); /* give condinates -> start from left top then give clockwise */
+	}
+
+	position: relative; /* to give the from refrence to the child element -> logo-box */
+
+	&__logo-box {
+		position: absolute;
+		top: 4rem;
+		left: 4rem;
+	}
+
+	&__logo {
+		height: 3.5rem;
+	}
+
+	&__text-box {
+		position: absolute;
+		top: 40%; /* here 50% is refering to the parent element width and height */
+		left: 50%; /* here 50% is refering to the parent element width and height */
+
+		transform: translate(
+			-50%,
+			-50%
+		); /* here 50% is refring to element itself */
+
+		text-align: center;
+	}
+}
+
+// this can be written inside above .header like : &__logo-box
+// .header__logo-box {
+// 	position: absolute;
+// 	top: 4rem;
+// 	left: 4rem;
+// }
+
+// .header__logo {
+// 	height: 3.5rem;
+// }
+
+// .header__text-box {
+// 	position: absolute;
+// 	top: 40%; /* here 50% is refering to the parent element width and height */
+// 	left: 50%; /* here 50% is refering to the parent element width and height */
+
+// 	transform: translate(-50%, -50%); /* here 50% is refring to element itself */
+
+// 	text-align: center;
+// }

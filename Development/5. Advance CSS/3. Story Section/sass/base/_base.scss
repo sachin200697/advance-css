@@ -1,0 +1,24 @@
+// to create a partial file we need to name it start with underscore (_) liek: _base.scss
+// so that it can be imported to main file
+// to import it inside main.scss file use this command: @import "base/base"; //no need to use _ and .scss while importing
+// we need to provide file path to import the file.
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+
+	/* to make it inherit for every elemnet (inherited from body as it is declared in body) */
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	/* box-sizing is not inherited bydefault but using inherit keywork we can make it inherit for every element 
+    but we need to use inherit for every element so we will use universal selector to inherit.*/
+	box-sizing: border-box;
+}

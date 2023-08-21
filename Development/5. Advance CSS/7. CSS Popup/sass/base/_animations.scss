@@ -1,0 +1,39 @@
+/* animation */
+@keyframes moveInLeft {
+	0% {
+		opacity: 0;
+		transform: translate(-10rem);
+	}
+	80% {
+		transform: translate(1rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveInRight {
+	0% {
+		opacity: 0;
+		transform: translate(100px); /* 100px is respective to initial state */
+	}
+	80% {
+		transform: translate(-10px); /* -10px is respective to initial state */
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0); /* 0 is respective to initial state */
+	}
+}
+
+@keyframes moveInButton {
+	0% {
+		opacity: 0;
+		transform: translateY(2rem); /* 100px is respective to initial state */
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0); /* 0 is respective to initial state */
+	}
+}

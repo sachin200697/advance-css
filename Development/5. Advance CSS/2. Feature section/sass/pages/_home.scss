@@ -1,0 +1,40 @@
+.section-about {
+	background-color: $color-gray-light-1;
+	padding: 25rem 0;
+	margin-top: -20vh; //to cover the triangle
+}
+
+.section-features{
+	padding: 20rem 0;
+	background-image: linear-gradient(
+			to right bottom,
+			rgba($color-green-primary, 0.8),
+			rgba($color-green-tritory, 0.8)
+		),
+		url(../img/nat-4.jpg);
+
+	background-size: cover; 
+	background-position: center; 
+	margin-top: -10rem;
+
+	// instead of using clip-path, we can also use transform: skew(-7deg)
+	// clip-path: polygon(
+	// 	0 20vh,
+	// 	100% 0,
+	// 	100% 75vh,
+	// 	0 100%
+	// );
+	transform: skewY(-7deg);	//but the problem now all inside thing also skewed to we need to 
+	//rever skew them 
+
+	// select only directly child
+	&>*{
+		transform: skewY(7deg);
+	}	
+}
+
+.section-tours{
+	padding: 25rem 0 15rem 0;
+	margin-top: -10rem;
+	background-color: $color-gray-light-1;
+}

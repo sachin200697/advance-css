@@ -1,0 +1,109 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+$color-primary: #65c18c;
+$color-secondary: #ef6d6d;
+$text-dark: #333;
+$button-width: 150px;
+
+// mixin is used to avoid repetation
+@mixin clearfix {
+	// clear the float property
+	&::after {
+		content: '';
+		clear: both;
+		display: table;
+	}
+}
+
+// mixin can take arguments as well
+@mixin text-link-style($mycolor) {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: $mycolor;
+}
+
+// functions
+@function divide($a, $b) {
+	@return $a/$b;
+}
+
+nav {
+	margin: divide(60, 2) * 1px; //as divide will return a number
+	//to convert that no into px we need to multiply it with 1px.
+	background-color: $color-primary;
+	@include clearfix;
+}
+
+.navigation {
+	float: left;
+	list-style: none;
+	background-color: $color-primary;
+	//here no need to write &
+	// if we directly write some name then it comes like this:
+	// nav li
+	li {
+		display: inline-block;
+		margin-left: 30px;
+
+		//here & represents the path till here.
+		//we can not write :first-child directly because it will be
+		//considered as nav li :first-child  (space between li &
+		// :first-child)
+		//instead it should be nav li:first-child
+		// li:first-child will also not work as it is equeal to
+		// nav li li:first-child
+		&:first-child {
+			margin-left: 0;
+		}
+		a:link {
+			@include text-link-style($text-dark);
+		}
+	}
+}
+
+.button {
+	float: right;
+}
+
+// extends
+// difference b/w mixin and extend
+// mixin simply put the code at that place where it get included
+// but extend combines the selectors
+%btn-placeholder {
+	padding: 10px;
+	display: inline-block;
+	border-radius: 100px;
+	width: $button-width;
+	text-align: center;
+	@include text-link-style(white);
+}
+// .button-main, .button-hot{
+//   padding: 10px;
+//   display: inline-block;
+//   border-radius: 100px;
+//   width: $button-width;
+//   text-align: center;
+//   @include text-link-style(white);
+// }
+
+.button-main {
+	@extend %btn-placeholder;
+	&:link {
+		background-color: $color-secondary;
+	}
+	&:hover {
+		background-color: darken($color-secondary, 15%);
+	}
+}
+.button-hot {
+	@extend %btn-placeholder;
+	&:link {
+		background-color: $color-secondary;
+		color: white;
+	}
+	&:hover {
+		background-color: lighten($color-secondary, 15%);
+	}
+}

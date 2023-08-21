@@ -1,0 +1,83 @@
+.popup{
+    position: absolute;
+    background-color: rgba($color-black, .8);
+    width: 100%;
+    height: 100vh;
+    top: 0; left: 0;
+    z-index: 201;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    &__content{
+        width: 75%;
+        background-color: $color-white;
+        // center the content
+        @include absCenter;
+        border-radius: 3px;
+        display: table;
+        overflow: hidden;   //to fix the border-radius damaged by images
+        height: auto;
+
+        transform: translate(-50%, -50%) scale(0);  //it is to cover the absCenter transform(as two transform
+        //can not work saperately and scale to give the animation
+        transition: all 0.8s 0.2s; // 0.2s is delay
+    }
+
+    &__left{
+        width: 33.33333%;
+        // float: left; //to give popup__left and popup__right, instead of using float: left;
+        // we need to use display: table-cell; on child element and display: table; on parent
+        display: table-cell;
+    }
+    &__right{
+        width: 66.666666;
+        display: table-cell;
+        vertical-align:middle;  //because now div is like a table cell so we can use this property
+        padding: 3rem 5rem;
+    }
+    &__img{
+        width: 100%;
+        display: block;
+        // float:left;
+    }
+    &__text{
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        // to make two column
+        column-count: 2;
+        column-gap: 4rem;   //default will be the same as font-size
+        column-rule: 1px solid $color-gray-light-2;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;  //where to show - //it will work only if you define lang="en" in html
+    }
+
+    // it will work when we use an anchor tag and target is popup
+    &:target{
+        opacity: 1;
+        visibility: visible;
+    }
+    &:target &__content{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &__close{
+        &:link, &:visited{
+            color: $color-gray;
+            position: absolute;
+            top:2.5rem;right:2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .8s;   
+            line-height: 1;         
+        }
+        &:hover{
+            color: $color-green-primary;
+        }
+                
+    }
+
+}

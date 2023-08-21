@@ -1,0 +1,15 @@
+{
+	"name": "3.-natours-project---with-sass",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"compile": "node-sass sass/main.scss css/style.css -w"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"node-sass": "^7.0.1"
+	}
+}

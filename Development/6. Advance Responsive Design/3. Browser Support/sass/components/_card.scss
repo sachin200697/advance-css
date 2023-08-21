@@ -1,0 +1,195 @@
+.card{
+    // we have to define perspective in parent then rotate in child component/element
+    // this helps to make a effect on card like while card is rotating then it is comming towards us
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+
+    // for absolute and perspective 
+    height: 52rem;
+
+    &__side{
+        position: absolute; //when we use absolute position then element come out from natural 
+        //flow due to which parent(card) will loose its natural hight and it will remove perspective
+        //effect, so we need to define the height of card as well
+        top: 0%;left: 0%;
+        // background-color: orangered;
+        height: 52rem;
+        width: 100%;
+        transition: all 0.8s;
+        backface-visibility: hidden; //to hide back part of an element
+        border-radius: 3px;
+        overflow: hidden;   //it is useful when we use background image that that ruin round cornors
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--front{
+            // background-color: orangered;
+        }
+
+        &--back{
+            transform: rotateY(180deg);
+            &-1{
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-2{
+                background-image: linear-gradient(to right bottom, $color-green-primary, $color-green-tritory);
+            }
+            &-3{
+                background-image: linear-gradient(to right bottom, $color-tertiory-light, $color-tertiory-dark);
+            }
+        }
+    }
+    
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back{
+        transform: rotateY(0deg);
+    }
+
+    &__picture{
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        &--1{
+            // we need to use the path of image by considering that we are inside css/style.css file
+            // that's why it looks different from the current path from components/card file
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+            background-size: cover;
+            background-blend-mode:screen;   //it will work only for chrome, firefox 
+            height: 23rem;
+        } 
+        &--2{
+            background-image: linear-gradient(to right bottom, $color-green-primary, $color-green-tritory), 
+            url(../img/nat-6.jpg);
+            background-size: cover;
+            background-blend-mode:screen;   //it will work only for chrome, firefox 
+            height: 23rem;
+        } 
+        &--3{
+            background-image: linear-gradient(to right bottom, $color-tertiory-light, $color-tertiory-dark), 
+            url(../img/nat-7.jpg);
+            background-size: cover;
+            background-blend-mode:screen;   //it will work only for chrome, firefox 
+            height: 23rem;
+        } 
+    }
+    &__heading{
+        font-size: 2.5rem;
+        font-weight: 300;
+        color:$color-white;
+        text-transform: uppercase;
+        text-align: right;
+        position:absolute;
+        top: 12rem; right:2rem;
+        width: 75%;
+    }
+
+    &__heading-span{
+        padding: 1rem 1.5rem;
+
+        // this property is used to make a single sentence like two entety(two seprate box)
+        // it helps to apply padding for all lines (lines created due to not enough space)
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        &--1{
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .8), rgba($color-secondary-dark, .8));
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, rgba($color-green-primary, .8), rgba($color-green-tritory    , .8));
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom, rgba($color-tertiory-light, .8), rgba($color-tertiory-dark, .8));
+        }
+    }
+
+    &__details{
+        ul{
+            padding: 3rem;
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            li{
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+                &:not(:last-child){
+                    border-bottom: 1px solid $color-gray-light-2;
+                }
+            }
+        }
+    }
+
+    // Back side style
+    &-cta{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__price-box{
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+        width: 90%;
+    }
+
+    &__price-only{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }   
+
+    &__price-value{
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+
+
+
+    //if changes are more in that case we can copy all previous css inside the media query then can 
+    //remove if something is not needed
+    @include respond(tab-port){
+        height: auto;
+        border-radius: 3px;
+        background-color: $color-white;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        &__side{
+            height: auto;
+            position: relative;
+            box-shadow: none;
+
+            &--back{
+                transform: rotateY(0);
+                clip-path: polygon(0 13%, 100% 0%, 100% 100%, 0 100%);
+            }
+        }
+        
+        &:hover &__side--front{
+            transform: rotateY(0);
+        }
+
+        // Back side style
+        &-cta{
+            position: relative;
+            top: 0%;
+            left: 0%;
+            transform: translate(0);
+            width: 100%;
+            padding: 7rem 4rem 4rem 4rem;
+        }
+        &__details{
+            padding: 1rem 3rem;
+        }
+
+        &__price-box{
+            margin-bottom: 3rem;
+        }
+
+        &__price-value{
+            font-size: 4rem;
+        }
+    }
+
+}

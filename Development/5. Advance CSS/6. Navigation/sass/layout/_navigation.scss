@@ -1,0 +1,135 @@
+.navigation{
+    &__checkbox{
+        display: none;
+    }
+
+    &__button{
+        width: 7rem;
+        height: 7rem;
+        position: fixed;
+        top: 6rem;right: 6rem;
+        border-radius: 50%;
+        background-color: $color-white;
+        z-index: 200;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__background{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;right:6.5rem;
+        background-image: radial-gradient($color-green-primary, $color-green-tritory);
+        z-index: 100;
+        // transform: scale(50);
+        box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .5);
+        transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    &__nav{
+        height: 100vh;
+        width: 0%;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        // background-color: red; 
+        z-index: 150;
+
+        // to hide the navigation and also content as well
+        // width: 0%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        
+    }
+
+    &__list{
+        position: absolute;
+        top: 50%;left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item{
+        margin: 1rem;
+    }
+
+    &__link{
+        &:link, &:visited{
+            display: inline-block;  //for transform and padding to work
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: $color-white;    
+            padding: 1rem 2rem;
+            // background-image: linear-gradient(120deg, red 0%, red 50%, $color-white 50%);
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 220%;
+            transition: all 0.8s;
+        }
+        &:hover, &:active{
+            background-position: 100%;
+            color:$color-green-primary;
+            transform: translateX(1rem);    //this will not work until it is a inline element
+        }
+    }
+
+    &__checkbox:checked ~ &__background{
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav{
+        visibility:visible;
+        width: 100%;
+        opacity: 1;
+    }
+
+    &__icon{
+        margin-top: 3.5rem;
+        position: relative;
+        &, &::after, &::before{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-gray-dark-3;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        &::after, &::before{
+            content: '';
+            position:absolute;
+            top:0%; left: 0;
+        }
+        &::before{
+            top:-.8rem;
+        }
+        &::after{
+            top:.8rem;
+        }
+    }
+    &__button:hover &__icon::before{
+        top:-1rem;   
+        // transform-origin: left;  //this is used tell the point (left, middle or right)
+    }
+    &__button:hover &__icon::after{
+        top:1rem;   
+    }
+
+    // rotation
+    &__checkbox:checked + &__button &__icon{
+        background-color: transparent;
+    }
+     &__checkbox:checked + &__button &__icon::after{
+        top: 0%;
+        transform: rotate(135deg);
+        
+    }
+     &__checkbox:checked + &__button &__icon::before{
+        top:0;
+        transform: rotate(-135deg);
+        
+    }
+}

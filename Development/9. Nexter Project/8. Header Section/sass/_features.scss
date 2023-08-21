@@ -1,0 +1,30 @@
+.features {
+	// background-color: $color-grey-light-2; 
+	grid-column: center-start/center-end;
+
+	display: grid;
+	// grid-template-columns: repeat(3, 1fr); //to make it responsive use below
+	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	margin: 15rem 0;
+	grid-gap: 6rem;
+
+	align-items: start;	//it is default stretch that cause the different gap between heading & paragraph text
+	//so to remove it we need to use this
+}
+
+.feature{
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	grid-gap: 1.5rem 2.5rem;
+	&__icon{
+		width: 4.5rem;
+		height: 4.5rem;
+		fill: $color-primary;
+		// grid-row: 1/-1;	//-1 is end for explicit grid not the end of implicit grid, so we need to use span
+		grid-row: 1/span 2;
+	}
+
+	&__text{
+		font-size: 1.7rem;
+	}
+}

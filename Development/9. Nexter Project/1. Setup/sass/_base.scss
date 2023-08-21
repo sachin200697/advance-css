@@ -1,0 +1,60 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #b28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483a;
+$color-grey-dark-2: #6d5d4b;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; //10/16 = 62.5 % ( to make font-size = 10px), now 1rem = 10px
+}
+
+body {
+	font-family: $font-primary;
+	color: $color-grey-dark-2;
+	font-weight: 300;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 80vh min-content auto 40vw repeat(3, min-content) ;
+	// 80vh as this shell is based on view-port height
+	// min-content : should take as height as it's content
+	// auto is same like min-content
+	// 40vw : now instead of view-port height, it will take view-port width
+
+	// 1140/8 = 142.5 aprox 14rem
+	// creating a fix column of 8rem for nav and remaining 8 col for grid system
+	grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] 
+		minmax(6rem, 1fr)
+		[center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end]	
+			//fix size 8 column grid //generally we go with 8 col or 12 col grid.
+			// minmax(min-content, 14rem) = max size 14rem and responsive but should 
+			// not be less that the size of content.
+		minmax(6rem, 1fr) [full-end];	
+
+	//to middle the 8 col gird we are using two more columns of 1fr before and 1fr at end 
+
+	& > *{
+		padding: 40px;
+		font-size: 20px;
+	}
+}

@@ -1,0 +1,535 @@
+.container-a{
+    background-color: #eee;
+    width: 700px;
+    display: grid;
+    grid-template-rows: 100px 150px;
+    grid-template-columns: 100px 200px 300px;
+
+    // grid-row-gap: 30px;
+    // grid-column-gap: 30px;
+    // we can also use %, em and rem to define the size
+    grid-gap: 10px 15px;    //grid-gap: row_rap column_gap;
+
+    .item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+        }
+        &--2{
+            background-color: Green;
+        }
+        &--3{
+            background-color: violet;
+        }
+        &--4{
+            background-color: Pink ;
+        }
+        &--5{
+            background-color: Blue;
+        }
+        &--6{
+            background-color: Brown;
+        }
+    }
+
+}
+
+// using repeat and fr
+.container-b{
+    background-color: #eee;
+    margin-top: 50px;
+    width: 700px;
+    display: grid;
+
+    // use of repeat function
+    // grid-template-rows: repeat(2, 150px 200px);  //define two rows with different size
+    grid-template-rows: repeat(2, 100px);   //created two tracks for rows
+
+    //defining three column:-> first two with repeat function and 3rd with 300px(without repeat)
+    // fr is frectional, it is like flex: 1; (means take full available space)
+    // 2fr means take double space in comparison of other columns
+    grid-template-columns: repeat(2, 100px) 1fr;  //created three tracks for columns
+
+    // grid-row-gap: 30px;
+    // grid-column-gap: 30px;
+    grid-gap: 10px 15px;    //grid-gap: row_rap column_gap;
+
+    .item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+        }
+        &--2{
+            background-color: Green;
+        }
+        &--3{
+            background-color: violet;
+        }
+        &--4{
+            background-color: Pink ;
+        }
+        &--5{
+            background-color: Blue;
+        }
+        &--6{
+            background-color: Brown;
+        }
+    }
+
+}
+
+
+// ordering the items
+.container-c{
+    background-color: #eee;
+    width: 700px;
+    display: grid;
+    margin-top: 50px;
+    
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-gap: 10px 15px;    
+
+    .item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+            // putting first item into second row
+            // grid-row-start: 2;  //item will start from row 2 and 
+            // grid-row-end: 3;    //item will end at row 3
+            // we can combine grid-row-start and end like below
+            // grid-row: 2 / 3;
+
+            // grid-column-start: 2;   //item will start from column 2 and 
+            // grid-column-end: 4; //item will end at column 4 
+            // we can combine grid-column-start and end like below
+            // grid-column: 2/4;
+
+            // we can also combine grid-row and grid-column into
+            //  grid-area: start_row/start_col/end_row/end_col
+            grid-area: 2 / 2 / 3 / 4;
+
+            // we can have multiple grid items in single cell(if we give same position by grid-area or row
+            // in this case last one will hide the first one (normally). but we can set z-index to change it
+
+        }
+        &--2{
+            background-color: Green;
+        }
+        &--3{
+            background-color: violet;
+        }
+        &--4{
+            background-color: Pink ;
+        }
+        &--5{
+            background-color: Blue;
+        }
+        &--6{
+            background-color: Brown;
+
+            // other way to position a item
+            grid-row: 1/2;  // item should take space from row 1 to 2
+            grid-column: 2/span 2;  // item should take place from column 2 and it should occupy next 2 columns means 2 span
+
+            // if we want to go from column 2 to the last column then we can use grid-column: 2 / -1;
+            // same for row as well 
+            // -1 represents last row or last column
+        }
+    }
+
+}
+
+
+
+
+// chalange code - my solution
+
+// ordering the items
+.chalange-container{
+    background-color: #eee;
+    width: 700px;
+    display: grid;
+    margin-top: 50px;
+    
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(3, 1fr) 200px;
+
+    grid-gap: 10px 15px;    
+
+    &__item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+            grid-area: 1 / 1 / 2 / -1;
+        }
+        &--2{
+            background-color: Green;
+            grid-area: 2 / 1 / 4 / 2;
+        }
+        &--3{
+            background-color: violet;
+            grid-area: 2 / 2 / 4 / 3;
+        }
+        &--4{
+            background-color: Pink ;
+            grid-area: 2 / 3 / 4 / 4;
+        }
+        &--5{
+            background-color: Blue;
+            grid-area: 2 / 4 / 8 / -1;
+        }
+        &--6{
+            background-color: Brown;
+            grid-area: 4 / 1 / 8 / 4;
+        }
+
+        &--7{
+            background-color: Brown;
+            grid-area: 8 / 1 / -1 / -1;
+        }
+    }
+
+}
+
+
+
+//chalange solution-1
+// ordering the items
+.chalange-solution-1-container{
+    margin: 50px auto;
+    width: 800px;
+
+    display: grid;
+    grid-template-rows: 50px 100px 200px 50px;
+    grid-template-columns: repeat(3, 1fr) 200px;
+    grid-gap: 20px;
+
+    & > *{
+        background-color: orange;
+        padding: 20px;
+        color: white;
+        font-size: 20px;
+    }
+
+    & .header{
+    
+        grid-column: 1/-1;
+    }
+    & .footer{
+        grid-column: 1/-1;
+    }
+
+    & .sidebar{
+        grid-column: 4 / 5;
+        grid-row: 2 / span 2;
+    }
+    & .main{
+        grid-column: 1/4;
+    }
+}
+
+//chalange solution-2 with grid-line names
+.chalange-solution-2-container{
+    margin-top: 50px;
+    width: 800px;
+    display: grid;
+
+    // we can give the name to lines
+    // we can give a line one or more names
+    // for row:=> line 1 = header start and line 2 = header-end and also = box-start
+    grid-template-rows: [header-start] 50px [header-end box-start] 100px [box-end main-start] 200px [main-end footer-start] 50px [footer-end];
+
+    // can also give name to columns
+    // to avoid conflict for same side fractions, name will be automatically like this
+    // col-start 1, col-start 2, col-start 3  and col-end 1, col-end 2, col-end 3
+    grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+    grid-gap: 20px;
+
+    & > *{
+        background-color: green;
+        padding: 20px;
+        color: white;
+        font-size: 20px;
+    }
+
+    & .header{
+        //instead of using row or column numbers, we can use names as well
+        grid-column: col-start 1/ grid-end;
+    }
+    & .footer{
+        grid-column: col-start 1/ grid-end;
+    }
+
+    & .sidebar{
+        grid-column: col-end 3 / grid-end;
+        grid-row: box-start / main-end ;
+    }
+    & .main{
+        grid-column: col-start 1/ col-end 3;
+    }
+}
+
+
+//chalange solution-3 width grid-area names
+.chalange-solution-3-container{
+    margin-top: 50px;
+    width: 800px;
+     
+    display: grid;
+    grid-template-rows: 50px 100px 200px 50px;
+    grid-template-columns: repeat(3, 1fr) 200px;
+    grid-gap: 20px;
+
+    grid-template-areas: "head   head   head   head" //this is first row and header occupy all columns
+                         "box-1  box-2  box-3  side"
+                         "main   main   main   side"
+                         "foot   foot   foot   foot"
+    ; //if there are 4 row and 4 coll then we need to give all (4*4 = 16) cells a name
+    // to make a cell empty, instead of giving a name, just use dot(.) .
+
+    & > *{
+        background-color: violet;
+        padding: 20px;
+        color: white;
+        font-size: 20px;
+    }
+
+    & .header{
+       //now we can use grid-area and instead of using row-start/col-start/row-end/col-end, we can give
+       // name of area that we defined in the container using grid-template-areas
+       grid-area: head;
+    }
+    & .footer{
+       grid-area: foot;
+    }
+
+    & .sidebar{
+        grid-area: side;
+    }
+    & .main{
+        grid-area: main;
+    }
+}
+
+
+// implecit vs explecit grid
+.container-d{
+    margin: 50px auto;
+    width: 800px;
+    background-color: pink;
+    
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    /*
+        here we are creating 2 row and 2 column that can contanin only 4 items and these 4 cells are 
+        explicit grid. There will be a dark line around all explicit grid items in devtools -> grid lines
+
+        So if we have more that 4 items then grid will automatically create gride for them and these cells
+        are part of implicit grid.
+        By default all extra items will go into a new row not into the new column bacause grid-auto-flow is
+        set to row.
+        Implicit grid trys to only enough space.
+    */
+
+    grid-auto-rows: 100px;  //to give the implicit item's row width
+    grid-auto-columns: .5fr;    //to give the implicit item's column width
+
+    // grid-auto-flow: column; //now extra items will go into the new created columns //order will be change 
+    // grid-auto-flow: column dense;   // dense means dont leave any grid empty
+
+    // align items inside the grid area
+    align-items: center;    //by defalut it is set to stretched // values: start, end, center, stretch
+    justify-items: center;  //to position items on row
+
+    .item{
+        font-size: 20px;
+        color: white;
+        background-color: aqua;
+        padding:20px;
+
+        &--4{
+            background-color: cadetblue;
+            grid-row: 2/span 3;
+            // like align-self in flexbox 
+            align-self: end;
+            justify-self: start;
+        }
+        &--7{
+            background-color: orange;
+            grid-column: 1/-1;
+        }
+    }
+}
+
+
+// align grid (like align-content in flexbox)
+.container-e{
+    margin: 50px auto;
+    width: 800px;
+    height: 800px;
+    background-color: pink;
+    
+    display: grid;
+    grid-template-rows: repeat(2, 100px);
+    grid-template-columns: repeat(2, 200px);
+    grid-gap: 10px;
+    
+    grid-auto-rows: 100px;  //to give the implicit item's row width
+    grid-auto-columns: .5fr;    //to give the implicit item's column width
+
+    // grid-auto-flow: column; //now extra items will go into the new created columns //order will be change 
+
+    // align items inside the grid area
+    // align-items: center;    //by defalut it is set to stretched // values: start, end, center, stretch
+    // justify-items: center;  //to position items on row
+
+
+    // align entire grid
+    // on row axis
+    justify-content: center;    // start, end, center, space-between, space-around, space-evenly
+
+    // on column axis
+    align-content: center;  //same as justify-content
+    
+    .item{
+        font-size: 20px;
+        color: white;
+        background-color: aqua;
+        padding:20px;
+    }
+}
+
+
+
+// container-f
+.container-f{
+    background-color: #eee;
+    width: 700px;
+    display: grid;
+    margin-top: 50px;
+    
+    
+    display: grid;
+
+    // instead of using units we can use max-content or min-content
+    // max-content : cell will try to take max width(for column) or max height(for row) based on the content
+    // min-content: cell will be min width or min height based on content
+    grid-template-rows: 100px max-content;
+    // grid-template-columns: 1fr 1fr 1fr min-content;
+
+    // use of minmax function
+    grid-template-columns: repeat(4, minmax(150px, min-content)); //it means column will try to take at
+    // least 150px width and it can extend based on content but will try to min width as min-content is 
+    // used. 
+    // if we use minmax(150px, max-content) then column will be atleast 150px wider but if content overflows
+    // then it will try to take make width based on content
+
+    grid-gap: 10px;    
+
+    .item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+        }
+        &--2{
+            background-color: Green;
+        }
+        &--3{
+            background-color: violet;
+        }
+        &--4{
+            background-color: Pink ;
+        }
+        &--5{
+            background-color: Blue;
+        }
+        &--6{
+            background-color: Brown;
+        }
+
+        &--7{
+            background-color: black;
+        }
+
+        &--8{
+            background-color: red;
+        }
+    }
+
+}
+
+
+// auto-fil and auto-fit
+// container-f
+.container-g{
+    background-color: #eee;
+    width: 1000px;
+    display: grid;
+    margin-top: 50px;
+    
+    
+    display: grid;
+
+    grid-template-rows: repeat(2, 1fr);
+    // if we dont know how many columns or rows we want to create then can use auto-fill or auto-fit
+    // grid-template-columns: repeat(auto-fill, 100px);
+    // grid-template-columns: repeat(auto-fit, 100px);
+    // auto-fill will create 1000(container-width) - 0(column gap) / 100(cell-width) = 10 column
+    // but auto-fit will create 8 column for content(as there are 8 items) and 1 column for remaining space
+
+    // we can use like below
+    // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));   //it will create 10 column
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); //now it will create only 8 column to take
+    //all available width, in this case if we started to decreate the size then no of columns will automatically
+    // decreate and will go into the next row, so by using this we can create responsive code without using 
+    // any media query
+
+    .item{
+        padding: 20px;
+        font-size: 20px;
+        color: white;
+        &--1{
+            background-color: orange;
+        }
+        &--2{
+            background-color: Green;
+        }
+        &--3{
+            background-color: violet;
+        }
+        &--4{
+            background-color: Pink ;
+        }
+        &--5{
+            background-color: Blue;
+        }
+        &--6{
+            background-color: Brown;
+        }
+
+        &--7{
+            background-color: black;
+        }
+
+        &--8{
+            background-color: red;
+        }
+    }
+
+}
+
+

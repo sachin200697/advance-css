@@ -1,0 +1,85 @@
+@mixin clearfix {
+	&::after {
+		content: '';
+		clear: both;
+		display: table;
+	}
+}
+
+@mixin absCenter {
+	position: absolute;
+	top: 50%;left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+// Media query manager
+/*
+	0px ---- 600px       phone
+	600px ---- 900px     tablate portrait
+	900px ---- 1200px    tablate landscape
+	1200px ---- 1800px   normal style
+	1800px ----          Big desktop
+
+	//Note: All media query will apply which satisfy the criteria. For example
+	Query 1 -> max-width: 900px; 
+	Query 2 -> max-width: 1200px;
+
+	if device width is 850px then both (Query 1 and Query 2) will apply
+
+	Order to apply media queries on our files: 
+		ORDER: Base + Typography > General Layout + grid > Page layout > components
+
+*/
+
+@mixin respond-phone {
+	/* 
+	@content is code of block that will be passed when we use this mixin like below.
+	Ex:
+	@include respond-phone{
+		phont-size: 2.5rem;
+	}
+
+	*/
+	@media (max-width: 600px) {
+		@content;
+	}
+}
+
+
+/*
+$breakpoint agrument choice:
+
+phone
+tab-port
+tab-land
+big-desktop
+
+@include respond(phone){
+	font-size: 2.5rem;
+}
+
+*/
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		//em and rem does not affected by root font size, it means 1rem or 1em will be alwary equel 
+		//to the pixels that browser provide
+		// so we will use em here as rem does not supported by some of browsers
+		// 1em = 16px
+		// we are not using px because default font size depend upon device and browser, so em will 
+		// em will automatically adapt default font-size but pixel will be ramain same
+		@media (max-width: 37.5em) { @content; }; 	// 16px = 1em => 600px = (600/16) em => 600px = 37.5em
+	}
+	@if $breakpoint == tab-port {
+		@media (max-width: 56.25em) { @content; }; // 16px = 1em => 900px = (900/16) em => 900px = 56.25em
+	}
+	@if $breakpoint == tab-land {
+		@media (max-width: 75em) { @content; }; // 16px = 1em => 1200px = (1200/16) em => 1200px = 75em
+	}
+
+	// for normal style : we already design normal style - desktop first, so no need to include it
+
+	@if $breakpoint == big-desktop {
+		@media (min-width: 112.5em) { @content; }; // 16px = 1em => 1800px = (1800/16) em => 1800px = 112.5em
+	}	
+}
