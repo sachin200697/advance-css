@@ -20,6 +20,33 @@ html{
     /* we dont want to set fix pixels becuase in this case user will loose the flexibility to resize the */
     /* font-size: 10px; */
 
+    /*
+        font units:
+        1. Rem (Root em): This unit is relative to the root element (usually the <html> tag) and is useful for 
+            creating responsive designs. One rem is equal to the font size of the root element. So if the font-size 
+            of the root element is set to 16px, then 1rem is equal to 16px. For example:
+                html {
+                  font-size: 16px;
+                }
+                
+                h1 {
+                  font-size: 2rem; /* 2 * 16px = 32px */
+                }
+        2. Em: This unit is relative to the font size of the parent element and can be useful for 
+           creating scalable designs. For example:
+                .parent {
+                  font-size: 16px;
+                }
+                
+                .child {
+                  font-size: 0.8em; /* 0.8 * 16px = 12.8px */
+                }
+
+        3. Px (Pixel): This unit is an absolute unit of measurement and is not relative to anything else. 
+            It is commonly used for fixed-size elements or elements that require exact measurements.
+            96px = 1inch
+    */
+
     font-size: 62.5%;  /* 16px = 100%   => 10 px = (10/16)*100 %   => 10px = 62.5% */
 }
 
